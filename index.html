@@ -7,24 +7,46 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Planner</title>
   <style>
-    <!-- 사이드바 -->.sidebar {}
+    html,
+    body,
+    #app {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .sidebar {
+      flex: 0;
+      min-width: 300px;
+    }
 
     .navigations {}
 
     .navigation-item {}
 
-    .list {}
+    .list {
+      flex: 1;
+    }
 
     .list-item {}
 
-    .details {}
+    .details {
+      flex: 0;
+      min-width: 300px;
+    }
   </style>
 </head>
 
 <body>
-  <div id="app">
+  <main id="app">
     <aside class="sidebar">
-      <div class="logo"></div>
+      <div class="logo">
+        <img src="http://logosvector.net/wp-content/uploads/2014/06/google-logo-vector-free-download-200x200.png">
+      </div>
       <ul class="navigations">
         <li class="navigation-item">
           <i>photo</i>
@@ -48,51 +70,97 @@
         </li>
       </ul>
     </aside>
-    <main>
-      <section class="list">
-        <div class="search">
-          <input type="text" placeholder="Search">
-          <button><i>Composer</i></button>
+    <section class="list">
+      <div class="search">
+        <input type="text" placeholder="Search">
+        <button><i>Composer</i></button>
+      </div>
+      <div class="list-item">
+        <div class="actions"><i>...</i></div>
+        <div class="header">Team holiday Trip to The Jewel of Java, Kulon Progo</div>
+        <div class="meta">15 May - 23 May 2016</div>
+        <div class="avatars">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/zeldman/128.jpg">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/iannnnn/128.jpg">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg">
         </div>
-        <div class="list-item">
-          <div class="actions"><i>...</i></div>
-          <div class="header">Team holiday Trip to The Jewel of Java, Kulon Progo</div>
-          <div class="meta">15 May - 23 May 2016</div>
-          <div class="avatars"></div>
+      </div>
+      <div class="list-item">
+        <div class="actions"><i>...</i></div>
+        <div class="header">Investors Meetup - Bromo</div>
+        <div class="meta">15 May - 23 May 2016</div>
+        <div class="avatars">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/admod/128.jpg">
         </div>
-        <div class="list-item">
-          <div class="actions"><i>...</i></div>
-          <div class="header">Investors Meetup - Bromo</div>
-          <div class="meta">15 May - 23 May 2016</div>
-          <div class="avatars"></div>
+      </div>
+      <div class="list-item">
+        <div class="actions"><i>...</i></div>
+        <div class="header"></div>
+        <div class="meta">15 May - 23 May 2016</div>
+        <div class="avatars">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/128.jpg">
         </div>
-        <div class="list-item">
-          <div class="actions"><i>...</i></div>
-          <div class="header"></div>
-          <div class="meta">15 May - 23 May 2016</div>
-          <div class="avatars"></div>
+      </div>
+      <div class="list-item">
+        <div class="actions"><i>...</i></div>
+        <div class="header">Team holiday Trip to The Jewel of Java, Kulon Progo</div>
+        <div class="meta">15 May - 23 May 2016</div>
+        <div class="avatars"></div>
+      </div>
+      <div class="list-item">
+        <div class="actions"><i>...</i></div>
+        <div class="header"></div>
+        <div class="meta">15 May - 23 May 2016</div>
+        <div class="avatars">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/sachagreif/128.jpg">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/sillyleo/128.jpg">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg">
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/admod/128.jpg">
         </div>
-        <div class="list-item">
-          <div class="actions"><i>...</i></div>
-          <div class="header">Team holiday Trip to The Jewel of Java, Kulon Progo</div>
-          <div class="meta">15 May - 23 May 2016</div>
-          <div class="avatars"></div>
+      </div>
+    </section>
+    <section class="details">
+      <div class="header">
+        <h1>Bromo, Indonesia</h1>
+        <h2>21<sup>c</sup></h2>
+      </div>
+      <div class="body">
+        <div class="section section-tasks">
+          <h1>MY TASKS</h1>
+          <ul>
+            <li>
+              <label for="">
+                    <input type="checkbox">
+                    Prepare the Sound Recorder
+                  </label>
+            </li>
+            <li>
+              <label for="">
+                    <input type="checkbox">
+                    Book a restaurant
+                  </label>
+            </li>
+            <li>
+              <label for="">
+                    <input type="checkbox">
+                    Book 24 hotel rooms
+                  </label>
+            </li>
+            <li>
+              <a href="#">more tasks</a>
+            </li>
+          </ul>
         </div>
-        <div class="list-item">
-          <div class="actions"><i>...</i></div>
-          <div class="header"></div>
-          <div class="meta">15 May - 23 May 2016</div>
-          <div class="avatars"></div>
+        <div class="section section-discussion">
+          <h1>DISCUSSION <small>(34 unread)</small></h1>
         </div>
-      </section>
-      <section class="details">
-        <div class="header">
-          <h1>Bromo, Indonesia</h1>
-          <h2>21<sup>c</sup></h2>
+        <div class="section section-progress">
+          <input type="range" min="0" max="100" value="30">
         </div>
-      </section>
-    </main>
-  </div>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
