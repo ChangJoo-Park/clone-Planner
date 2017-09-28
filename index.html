@@ -5,14 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
   <title>Planner</title>
   <style>
+    * {
+      box-sizing:border-box;
+    }
     html,
     body,
     #app {
       margin: 0;
       padding: 0;
       height: 100%;
+      font-family: 'Montserrat', sans-serif;
     }
 
     #app {
@@ -23,33 +30,78 @@
 
     .sidebar {
       flex: 0;
-      min-width: 200px;
+      min-width: 300px;
       height: 100%;
+      border-right: 1px solid #f5f5f5;
     }
+
     .sidebar .logo img {
-      width: 100%;
+      width: 80%;
       box-sizing: border-box;
       padding: 20px;
     }
+
     .search {
       display: flex;
+      border-bottom: 1px solid #f5f5f5;
+      border-left: 1px solid #f5f5f5;
+      border-right: 1px solid #f5f5f5;
+      max-width: 800px;
+      margin: 0 auto;
+
     }
-    .search-input, .search-action {
-      height: 100%;
+
+    .search-input,
+    .search-action {
+      border: none;
+      font-family: 'Montserrat', sans-serif;
     }
+
     .search-input {
       flex: 1;
       padding: 10px 20px;
     }
-    
+
     .search-action {
       flex: 0;
       padding: 10px 20px;
+      cursor: pointer;
+      background-color: #F5F7F6;
     }
 
-    .navigations {}
+    .navigations {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
 
-    .navigation-item {}
+    .navigation-item {
+      display: flex;
+      align-content: center;
+      padding: 20px;
+      color: #CDD1D4;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .navigation-item:hover {
+      background-color: #F5F7F6;
+    }
+
+    .navigation-item .material-icons {
+      font-size: 2rem;
+    }
+
+    .navigation-item .navigation-menu {
+      padding-left: 20px;
+      font-size: 1.4rem;
+    }
+
+    .navigation-item.active {
+      color: #8A909F;
+      background-color: #F5F7F6;
+      border-right: 1px solid #EEF0EF;
+    }
 
     .list-wrapper {
       flex: 1;
@@ -57,39 +109,63 @@
       height: 100vh;
       overflow: auto;
     }
+
     .list {
+      border-left: 1px solid #f5f5f5;
+      border-right: 1px solid #f5f5f5;
       max-width: 800px;
       margin: 0 auto;
     }
+
     .list-item {
       padding: 20px;
       position: relative;
     }
 
+    .list-item:hover {
+      background-color: #F5F7F6;
+    }
+
     .list-item .actions {
-      position: absolute;
-      right: 10px;
-      top: 10px;
+      padding-top: 10px;
+      text-align: right;
+    }
+
+    .action {
+      color: #CDD1D4;
+    }
+
+    .list-item .actions .action:hover {
+      color: #8A909F;
     }
 
     .list-item .header {
       font-size: 1.3rem;
       font-weight: bold;
       margin-bottom: 20px;
+      color: #8A909F;
     }
+
     .list-item .meta {
       font-weight: lighter;
       margin-bottom: 20px;
+      color: #CDD1D4;
     }
+
     .list-item,
-    .avatars {
-    }
+    .avatars {}
 
     .list-item .avatars .avatar {
       width: 40px;
       border-radius: 50%;
+      cursor: pointer;
     }
-    .avatar + .avatar {
+
+    .list-item .avatars .avatar:hover {
+      transform: scale(1.2);
+    }
+
+    .avatar+.avatar {
       margin-left: 10px;
     }
 
@@ -97,6 +173,146 @@
       flex: 0;
       min-width: 300px;
       height: 100%;
+      box-sizing: border-box;
+    }
+
+    .details .header {
+      padding: 10px;
+      background-color: #1abc9c;
+      min-height: 200px;
+      color: #fff;
+    }
+
+    .details .header-title {
+      margin: 0;
+      padding: 0;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .details .header {
+      position: relative;
+    }
+    .details .header .header-action {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #CDD1D4;
+    }
+    .header-action:hover .material-icons{
+      color: #8A909F;
+    }
+    .header-title .header-small {
+      color: #909397;
+    }
+
+    .details .body {
+      padding: 10px;
+    }
+    .section {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .section-progress {
+      margin-top: 20px;
+      width: 100%;
+    }
+    .task-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .task-item {
+      color: #909397;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .task-item.completed {
+      color: #CDD1D4;
+      text-decoration: line-through;
+    }
+
+    .task-item-action {
+      color: #CDD1D4;
+    }
+    span.field {
+      display: block;
+      margin-bottom: .5em;
+    }
+
+    input[type="radio"] + label,
+    input[type="checkbox"] + label {
+      color: #000;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    input[type="radio"]:hover,
+    input[type="checkbox"]:hover,
+    input[type="radio"]:focus,
+    input[type="checkbox"]:focus,
+    input[type="radio"]:hover + label,
+    input[type="checkbox"]:hover + label,
+    input[type="radio"]:focus + label,
+    input[type="checkbox"]:focus + label {
+      border-color: #ddd;
+      color: #ddd;
+    }
+    input[type="radio"]:checked + label,
+    input[type="checkbox"]:checked + label {
+      color: black;
+      position: relative;
+    }
+    input[type="radio"] + label::before {
+      content: '';
+      width: 1em;
+      height: 1em;
+      margin-right: .5em;
+      position: relative;
+      top: .4em;
+      display: inline-block;
+      background-color: transparent;
+      border-radius: 2em;
+      border: 4px solid #ddd;
+    }
+    input[type="checkbox"] + label::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      margin-right: .5em;
+      position: relative;
+      top: .25em;
+      display: inline-block;
+      background-color: #ddd;
+      border-radius: 5px;
+    }
+    input[type="checkbox"]:checked + label::after {
+      content: '✔';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 4px;
+      width: 10px;
+      height: 10px;
+      color: #fff;
+    }
+    input[type="radio"]:checked + label::before {
+      border-color: #ddd;
+    }
+    input[type="radio"]:checked + label::after {
+      content: '';
+      width: .75em;
+      height: .75em;
+      position: absolute;
+      top: .12em;
+      left: .35em;
+      display: inline-block;
+      background-color: #ddd;
+      border-radius: 2em;
     }
   </style>
 </head>
@@ -105,39 +321,38 @@
   <main id="app">
     <aside class="sidebar">
       <div class="logo">
-        <img src="http://logosvector.net/wp-content/uploads/2014/06/google-logo-vector-free-download-200x200.png">
+        <img src="https://blog.asana.com/wp-content/post-images/logo_horiz1.png" width="240px" height="90px">
       </div>
       <ul class="navigations">
         <li class="navigation-item">
-          <i>photo</i>
-          <span>Home</span>
+          <i class="material-icons">home</i>
+          <span class="navigation-menu">Home</spa>
         </li>
         <li class="navigation-item active">
-          <i>bag</i>
-          <span>My Trip</span>
+          <i class="material-icons">beenhere</i>
+          <span class="navigation-menu">My Trip</span>
         </li>
         <li class="navigation-item">
-          <i>map</i>
-          <span>Discover Places</span>
+          <i class="material-icons">map</i>
+          <span class="navigation-menu">Discover Places</span>
         </li>
         <li class="navigation-item">
-          <i>inbox</i>
-          <span>Notifications</span>
+          <i class="material-icons">inbox</i>
+          <span class="navigation-menu">Notifications</span>
         </li>
         <li class="navigation-item">
-          <i>switch</i>
-          <span>Settings</span>
+          <i class="material-icons">settings</i>
+          <span class="navigation-menu">Settings</span>
         </li>
       </ul>
     </aside>
     <section class="list-wrapper">
+      <div class="search">
+        <input type="text" placeholder="Search" class="search-input">
+        <button class="search-action"><i class="material-icons">create</i></button>
+      </div>
       <div class="list">
-        <div class="search">
-          <input type="text" placeholder="Search" class="search-input">
-          <button class="search-action"><i>Composer</i></button>
-        </div>
         <div class="list-item">
-          <div class="actions"><i>...</i></div>
           <div class="header">Team holiday Trip to The Jewel of Java, Kulon Progo</div>
           <div class="meta">15 May - 23 May 2016</div>
           <div class="avatars">
@@ -145,32 +360,44 @@
             <img src="https://s3.amazonaws.com/uifaces/faces/twitter/iannnnn/128.jpg" class="avatar">
             <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="avatar">
           </div>
+          <div class="actions">
+            <a href="#" class="action action-favorite"><i class="material-icons">favorite_border</i></a>
+            <a href="#" class="action action-bookmark"><i class="material-icons">bookmark_border</i></a>
+          </div>
         </div>
         <div class="list-item">
-          <div class="actions"><i>...</i></div>
           <div class="header">Investors Meetup - Bromo</div>
           <div class="meta">15 May - 23 May 2016</div>
           <div class="avatars">
             <img src="https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg" class="avatar">
             <img src="https://s3.amazonaws.com/uifaces/faces/twitter/admod/128.jpg" class="avatar">
           </div>
+          <div class="actions">
+            <a href="#" class="action action-favorite"><i class="material-icons">favorite_border</i></a>
+            <a href="#" class="action action-bookmark"><i class="material-icons">bookmark_border</i></a>
+          </div>
         </div>
         <div class="list-item">
-          <div class="actions"><i>...</i></div>
           <div class="header">Team holiday Trip to The Jewel of Java, Kulon Progo</div>
           <div class="meta">15 May - 23 May 2016</div>
           <div class="avatars">
             <img src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/128.jpg" class="avatar">
           </div>
+          <div class="actions">
+            <a href="#" class="action action-favorite"><i class="material-icons">favorite_border</i></a>
+            <a href="#" class="action action-bookmark"><i class="material-icons">bookmark_border</i></a>
+          </div>
         </div>
         <div class="list-item">
-          <div class="actions"><i>...</i></div>
           <div class="header">Team holiday Trip to The Jewel of Java, Kulon Progo</div>
           <div class="meta">15 May - 23 May 2016</div>
           <div class="avatars"></div>
+          <div class="actions">
+            <a href="#" class="action action-favorite"><i class="material-icons">favorite_border</i></a>
+            <a href="#" class="action action-bookmark"><i class="material-icons">bookmark_border</i></a>
+          </div>
         </div>
         <div class="list-item">
-          <div class="actions"><i>...</i></div>
           <div class="header">Investors Meetup - Bromo</div>
           <div class="meta">15 May - 23 May 2016</div>
           <div class="avatars">
@@ -179,46 +406,53 @@
             <img src="https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg" class="avatar">
             <img src="https://s3.amazonaws.com/uifaces/faces/twitter/admod/128.jpg" class="avatar">
           </div>
+          <div class="actions">
+            <a href="#" class="action action-favorite"><i class="material-icons">favorite_border</i></a>
+            <a href="#" class="action action-bookmark"><i class="material-icons">bookmark_border</i></a>
+          </div>
         </div>
       </div>
     </section>
     <section class="details">
       <div class="header">
-        <h1>Bromo, Indonesia</h1>
-        <h2>21<sup>c</sup></h2>
+        <h1 class="header-title">Bromo, Indonesia</h1>
+        <h2>21<small>&#x2103;</small></h2>
+        <a class="action header-action" href="#"><i class="material-icons">tune</i></a>
       </div>
       <div class="body">
         <div class="section section-tasks">
-          <h1>MY TASKS</h1>
-          <ul>
-            <li>
-              <label for="">
-                    <input type="checkbox">
-                    Prepare the Sound Recorder
-                  </label>
+          <h1 class="header-title">MY TASKS</h1>
+          <ul class="task-list">
+            <li class="task-item">
+              <span class="field">
+                <input type="checkbox" id="item1">
+                <label for="item1">Prepare the Sound Recorder</label>
+              </span>
             </li>
-            <li>
-              <label for="">
-                    <input type="checkbox">
-                    Book a restaurant
-                  </label>
+            <li class="task-item completed">
+              <span class="field">
+                <input type="checkbox" checked  id="item2">
+                <label for="item2">Book a restaurant</label>
+              </span>                    
             </li>
-            <li>
-              <label for="">
-                    <input type="checkbox">
-                    Book 24 hotel rooms
-                  </label>
+            <li class="task-item">
+              <span class="field">
+                <input type="checkbox" id="item3">
+                <label for="item3">Book 24 hotel rooms</label>
+              </span>
+
             </li>
-            <li>
-              <a href="#">more tasks</a>
+            <li class="task-item">
+              <a href="#" class="task-item-action">more tasks</a>
             </li>
           </ul>
         </div>
-        <div class="section section-discussion">
-          <h1>DISCUSSION <small>(34 unread)</small></h1>
+        <div class="section">
+          <h1 class="header-title">DISCUSSION <small class="header-small">(34 unread)</small></h1>
         </div>
-        <div class="section section-progress">
-          <input type="range" min="0" max="100" value="30">
+        <div class="section">
+            <h1 class="header-title">PROGRESS <small class="header-small">(Day 3 of 9)</small></h1>
+          <input type="range" min="0" max="100" value="30" class="section-progress">
         </div>
       </div>
     </section>
